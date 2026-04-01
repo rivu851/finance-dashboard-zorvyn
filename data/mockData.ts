@@ -1,0 +1,68 @@
+import { Transaction } from '../types';
+
+export const MOCK_TRANSACTIONS: Transaction[] = [
+  {
+    id: '1',
+    amount: 2500,
+    category: 'Salary',
+    type: 'income',
+    date: '2024-03-01T10:00:00Z',
+    description: 'Monthly Salary',
+  },
+  {
+    id: '2',
+    amount: 120,
+    category: 'Food',
+    type: 'expense',
+    date: '2024-03-02T12:30:00Z',
+    description: 'Grocery Shopping',
+  },
+  {
+    id: '3',
+    amount: 45,
+    category: 'Transport',
+    type: 'expense',
+    date: '2024-03-03T08:15:00Z',
+    description: 'Uber Ride',
+  },
+  {
+    id: '4',
+    amount: 800,
+    category: 'Rent',
+    type: 'expense',
+    date: '2024-03-05T09:00:00Z',
+    description: 'Monthly Rent',
+  },
+  {
+    id: '5',
+    amount: 150,
+    category: 'Entertainment',
+    type: 'expense',
+    date: '2024-03-07T20:00:00Z',
+    description: 'Movie Night',
+  },
+  {
+    id: '6',
+    amount: 300,
+    category: 'Freelance',
+    type: 'income',
+    date: '2024-03-10T14:00:00Z',
+    description: 'Logo Design Project',
+  },
+  {
+    id: '7',
+    amount: 60,
+    category: 'Utilities',
+    type: 'expense',
+    date: '2024-03-12T11:00:00Z',
+    description: 'Electricity Bill',
+  },
+  {
+    id: '8',
+    amount: 200,
+    category: 'Shopping',
+    type: 'expense',
+    date: '2024-03-15T16:30:00Z',
+    description: 'New Sneakers',
+  },
+];
