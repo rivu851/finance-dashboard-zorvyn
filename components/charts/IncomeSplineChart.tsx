@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
 } from 'recharts';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../../context/FinanceContext';
 import { format, subMonths, startOfMonth, endOfMonth } from 'date-fns';
 
 export function IncomeSplineChart() {
@@ -30,7 +30,8 @@ export function IncomeSplineChart() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200 mt-8"
     >
       <div className="flex items-center justify-between mb-6">

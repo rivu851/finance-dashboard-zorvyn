@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { FinanceProvider } from '../context/FinanceContext';
-import { AddTransactionModal } from '../components/AddTransactionModal';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import MainContent from '../components/MainContent';
+import { AddTransactionModal } from '../components/transactions/AddTransactionModal';
+import Sidebar from '../components/layout/Sidebar';
+import Header from '../components/layout/Header';
+import MainContent from '../components/layout/MainContent';
 
 export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,6 +49,7 @@ export default function Dashboard() {
         </main>
 
         <AddTransactionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <Toaster position="bottom-right" />
       </div>
     </FinanceProvider>
   );

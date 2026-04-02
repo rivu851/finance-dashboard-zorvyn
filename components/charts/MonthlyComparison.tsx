@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../../context/FinanceContext';
 import { format, subMonths, startOfMonth, endOfMonth } from 'date-fns';
 
 export function MonthlyComparison() {
@@ -35,7 +35,8 @@ export function MonthlyComparison() {
     <div className="space-y-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200"
       >
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Monthly Financial Comparison</h2>
@@ -63,7 +64,8 @@ export function MonthlyComparison() {
           <motion.div
             key={data.name}
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="bg-white dark:bg-gray-800 p-5 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200"
           >
             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">{data.name} Summary</h3>

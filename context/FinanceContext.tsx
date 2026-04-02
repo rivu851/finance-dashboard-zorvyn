@@ -33,6 +33,11 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
 
   // Load initial data
   useEffect(() => {
+    const savedRole = localStorage.getItem('findash_role_v2');
+    if (savedRole && (savedRole === 'admin' || savedRole === 'viewer')) {
+      setRole(savedRole as UserRole);
+    }
+    
     const saved = localStorage.getItem('findash_transactions_v2');
     const data = saved ? JSON.parse(saved) : MOCK_TRANSACTIONS;
     setTimeout(() => setTransactions(data), 0);
@@ -44,6 +49,10 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('findash_transactions_v2', JSON.stringify(transactions));
     }
   }, [transactions]);
+  
+  useEffect(() => {
+    localStorage.setItem('findash_role_v2', role);
+  }, [role]);
 
   const addTransaction = (newTx: Omit<Transaction, 'id'>) => {
     const transaction: Transaction = {
@@ -61,7 +70,7 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
     return transactions
       .filter((tx) => {
         const matchesSearch = tx.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                             tx.category.toLowerCase().includes(searchQuery.toLowerCase());
+          tx.category.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesType = filterType === 'all' || tx.type === filterType;
         return matchesSearch && matchesType;
       })
@@ -83,14 +92,14 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
     const totalExpenses = transactions
       .filter((tx) => tx.type === 'expense')
       .reduce((acc, tx) => acc + tx.amount, 0);
-    
+
     const categoryMap: Record<string, number> = {};
     transactions
       .filter(tx => tx.type === 'expense')
       .forEach(tx => {
         categoryMap[tx.category] = (categoryMap[tx.category] || 0) + tx.amount;
       });
-    
+
     const highestCategory = Object.entries(categoryMap).sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
 
     return {

@@ -3,8 +3,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, Filter, ArrowUpDown, Trash2, PlusCircle, Download } from 'lucide-react';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../../context/FinanceContext';
 import { format } from 'date-fns';
+import { toast } from 'react-hot-toast';
 
 export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { onAddClick: () => void, isCompact?: boolean, onViewAll?: () => void }) => {
   const {
@@ -18,7 +19,8 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
     sortOrder,
     setSortOrder,
     deleteTransaction,
-    role
+    role,
+    transactions
   } = useFinance();
 
   const exportToCSV = () => {
@@ -51,6 +53,31 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
       setSortBy(key);
       setSortOrder('desc');
     }
+  };
+
+  const handleAddClick = () => {
+    if (role !== 'admin') {
+      toast.error('Access Denied. Admin only.', { style: { borderRadius: '10px', background: '#333', color: '#fff' } });
+      return;
+    }
+    onAddClick();
+  };
+
+  const handleDelete = (id: string) => {
+    if (role !== 'admin') {
+      toast.error('Access Denied. Admin only.', { style: { borderRadius: '10px', background: '#333', color: '#fff' } });
+      return;
+    }
+    deleteTransaction(id);
+    toast.success('Transaction deleted');
+  };
+
+  const handleEdit = () => {
+    if (role !== 'admin') {
+      toast.error('Access Denied. Admin only.', { style: { borderRadius: '10px', background: '#333', color: '#fff' } });
+      return;
+    }
+    toast('Editing coming soon!', { icon: '🏗️' });
   };
 
   return (
@@ -96,8 +123,8 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={onAddClick}
-                className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-xl text-sm font-medium hover:bg-purple-700 transition-colors shadow-sm shadow-purple-200"
+                onClick={handleAddClick}
+                className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-xl text-sm font-medium hover:bg-purple-700 transition-colors shadow-sm shadow-purple-200 cursor-pointer"
               >
                 <PlusCircle size={18} className="mr-2" />
                 Add New
@@ -125,7 +152,7 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
                   <ArrowUpDown size={14} className="ml-1 opacity-50" />
                 </div>
               </th>
-              {role === 'admin' && <th className="px-6 py-4 text-right">Actions</th>}
+              <th className="px-6 py-4 text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50 dark:divide-gray-700/50">
@@ -154,24 +181,28 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
                     }`}>
                     {tx.type === 'income' ? '+' : '-'}${tx.amount.toLocaleString()}
                   </td>
-                  {role === 'admin' && (
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button
-                          className="p-2 text-gray-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all"
-                          title="Edit (Simulated)"
-                        >
-                          <PlusCircle size={18} className="rotate-45" />
-                        </button>
-                        <button
-                          onClick={() => deleteTransaction(tx.id)}
-                          className="p-2 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-                    </td>
-                  )}
+                  <td className="px-6 py-4 text-right">
+                    <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={handleEdit}
+                        title={role !== 'admin' ? 'Admin only' : 'Edit (Simulated)'}
+                        className={`p-2 rounded-lg transition-all ${
+                          role === 'admin' ? 'text-gray-400 hover:text-purple-600 hover:bg-purple-50 cursor-pointer' : 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
+                        }`}
+                      >
+                        <PlusCircle size={18} className="rotate-45" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(tx.id)}
+                        title={role !== 'admin' ? 'Admin only' : 'Delete'}
+                        className={`p-2 rounded-lg transition-all ${
+                          role === 'admin' ? 'text-gray-400 hover:text-rose-600 hover:bg-rose-50 cursor-pointer' : 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
+                        }`}
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </td>
                 </motion.tr>
               ))}
             </AnimatePresence>
@@ -183,15 +214,21 @@ export const TransactionList = ({ onAddClick, isCompact = false, onViewAll }: { 
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full mb-4">
               <Filter className="text-gray-400 dark:text-gray-500" size={32} />
             </div>
-            <h4 className="text-gray-900 dark:text-white font-semibold mb-1">No transactions found</h4>
-            <p className="text-gray-500 dark:text-gray-400 text-sm">Try adjusting your search or filters.</p>
+            <h4 className="text-gray-900 dark:text-white font-semibold mb-1">
+              {transactions.length === 0 ? 'No transactions yet.' : 'No transactions found.'}
+            </h4>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">
+              {transactions.length === 0 
+                ? (role === 'viewer' ? 'Switch to Admin to add one.' : 'Start tracking by adding a new transaction.') 
+                : 'Try adjusting your search or filters.'}
+            </p>
           </div>
         )}
       </div>
 
       {isCompact && onViewAll && (
-        <div className="p-4 border-t border-gray-50 dark:border-gray-700/50 bg-gray-50 dark:bg-gray-800/50 flex justify-center">
-          <button 
+        <div className="p-4 border-t border-gray-50 dark:border-gray-700/50 bg-gray-50 dark:bg-gray-800/50 flex justify-center gap-4">
+          <button
             onClick={onViewAll}
             className="text-sm text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 px-4 py-2 rounded-lg hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
           >

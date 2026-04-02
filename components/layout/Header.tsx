@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Menu, Bell } from 'lucide-react';
-import { RoleToggle } from './InsightsAndRole';
-import { ThemeToggle } from './ThemeToggle';
+import { RoleToggle } from '../dashboard/InsightsAndRole';
+import { ThemeToggle } from '../ui/ThemeToggle';
+import { useFinance } from '../../context/FinanceContext';
 
 interface HeaderProps {
   activeTab: string;
@@ -10,6 +11,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ activeTab, setIsMobileMenuOpen }) => {
+  const { role } = useFinance();
   const getSubtitle = (tab: string) => {
     switch (tab) {
       case 'Overview':
@@ -58,9 +60,14 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setIsMobileMenuOpen }) => {
           <button className="p-2.5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:shadow-sm transition-all">
             <Bell size={20} />
           </button>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 p-0.5 shadow-md">
-            <div className="w-full h-full rounded-[10px] bg-white flex items-center justify-center text-sm font-bold text-purple-600">
-              JD
+          <div className="flex items-center ml-2 border border-purple-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-full pr-1 pl-3 py-1 shadow-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mr-3">
+              {role}
+            </span>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-600 p-0.5 shadow-md">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-xs font-bold text-purple-600">
+                JD
+              </div>
             </div>
           </div>
         </div>

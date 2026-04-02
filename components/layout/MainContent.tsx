@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { SummaryCards } from './SummaryCards';
-import { ChartsSection } from './ChartsSection';
-import { TransactionList } from './TransactionList';
-import { InsightsSection } from './InsightsAndRole';
-import { MonthlyComparison } from './MonthlyComparison';
-import { IncomeSplineChart } from './IncomeSplineChart';
-import AccountsView from './AccountsView';
-import SettingsView from './SettingsView';
+import { SummaryCards } from '../dashboard/SummaryCards';
+import { ChartsSection } from '../charts/ChartsSection';
+import { TransactionList } from '../transactions/TransactionList';
+import { InsightsSection } from '../dashboard/InsightsAndRole';
+import { MonthlyComparison } from '../charts/MonthlyComparison';
+import { IncomeSplineChart } from '../charts/IncomeSplineChart';
+import AccountsView from '../views/AccountsView';
+import SettingsView from '../views/SettingsView';
 
 interface MainContentProps {
   activeTab: string;
@@ -21,7 +21,10 @@ const MainContent: React.FC<MainContentProps> = ({ activeTab, setActiveTab, setI
       case 'Overview':
         return (
           <>
-            <SummaryCards onMonthlyComparisonClick={() => setActiveTab('Monthly Comparison')} />
+            <SummaryCards 
+              onMonthlyComparisonClick={() => setActiveTab('Monthly Comparison')} 
+              onEditTransactionsClick={() => setActiveTab('Transactions')} 
+            />
             <ChartsSection />
             <InsightsSection />
             <TransactionList

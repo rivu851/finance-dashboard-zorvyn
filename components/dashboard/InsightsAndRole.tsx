@@ -3,15 +3,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Eye, PieChart, AlertCircle, BarChart2 } from 'lucide-react';
-import { useFinance } from '../context/FinanceContext';
+import { useFinance } from '../../context/FinanceContext';
+import { toast } from 'react-hot-toast';
 
 export const InsightsSection = () => {
   const { stats, transactions } = useFinance();
 
-  const expensePercentage = stats.totalIncome > 0 
-    ? (stats.totalExpenses / stats.totalIncome) * 100 
+  const expensePercentage = stats.totalIncome > 0
+    ? (stats.totalExpenses / stats.totalIncome) * 100
     : 0;
-  
+
   const cashFlowDiff = stats.totalIncome - stats.totalExpenses;
   const isPositiveFlow = cashFlowDiff >= 0;
 
@@ -69,26 +70,44 @@ export const InsightsSection = () => {
 export const RoleToggle = () => {
   const { role, setRole } = useFinance();
 
+  const handleRoleChange = (newRole: 'admin' | 'viewer') => {
+    if (role === newRole) return;
+    setRole(newRole);
+    toast(`Switched to ${newRole === 'admin' ? 'Admin' : 'Viewer'} mode`, {
+      icon: newRole === 'admin' ? '🛡️' : '👁️',
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
+  };
+
   return (
-    <div className="flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-xl transition-colors duration-200 border border-transparent dark:border-gray-700">
-      <button
-        onClick={() => setRole('viewer')}
-        className={`flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
-          role === 'viewer' ? 'bg-white dark:bg-gray-700 text-purple-600 dark:text-purple-400 shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
-        }`}
-      >
-        <Eye size={16} className="mr-2" />
-        Viewer
-      </button>
-      <button
-        onClick={() => setRole('admin')}
-        className={`flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
-          role === 'admin' ? 'bg-white dark:bg-gray-700 text-purple-600 dark:text-purple-400 shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
-        }`}
-      >
-        <Shield size={16} className="mr-2" />
-        Admin
-      </button>
+    <div className="flex items-center space-x-3">
+      <span className="hidden sm:inline-block text-xs font-semibold text-gray-400 uppercase tracking-widest">
+        Switch Role (Demo)
+      </span>
+      <div className="flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-xl transition-colors duration-200 border border-transparent dark:border-gray-700">
+        <button
+          onClick={() => handleRoleChange('viewer')}
+          className={`flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            role === 'viewer' ? 'bg-white dark:bg-[#6A2AF3] text-purple-600 dark:text-white shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+          }`}
+        >
+          <Eye size={16} className="mr-2" />
+          Viewer
+        </button>
+        <button
+          onClick={() => handleRoleChange('admin')}
+          className={`flex items-center px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            role === 'admin' ? 'bg-white dark:bg-[#6A2AF3] text-purple-600 dark:text-white shadow-sm' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+          }`}
+        >
+          <Shield size={16} className="mr-2" />
+          Admin
+        </button>
+      </div>
     </div>
   );
 };

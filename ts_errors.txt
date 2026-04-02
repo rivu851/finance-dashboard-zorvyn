@@ -1,0 +1,24 @@
+﻿components/charts/ChartsSection.tsx(9,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/charts/ChartsSection.tsx(26,15): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/ChartsSection.tsx(27,16): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+components/charts/ChartsSection.tsx(27,21): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/ChartsSection.tsx(36,13): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/ChartsSection.tsx(37,14): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/IncomeSplineChart.tsx(8,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/charts/IncomeSplineChart.tsx(21,15): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/IncomeSplineChart.tsx(22,16): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+components/charts/IncomeSplineChart.tsx(22,21): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(6,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/charts/MonthlyComparison.tsx(19,15): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(20,16): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(20,21): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(23,15): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(24,16): error TS7006: Parameter 'acc' implicitly has an 'any' type.
+components/charts/MonthlyComparison.tsx(24,21): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/dashboard/InsightsAndRole.tsx(6,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/dashboard/SummaryCards.tsx(6,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/transactions/AddTransactionModal.tsx(6,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/transactions/AddTransactionModal.tsx(7,33): error TS2307: Cannot find module '../types' or its corresponding type declarations.
+components/transactions/TransactionList.tsx(6,28): error TS2307: Cannot find module '../context/FinanceContext' or its corresponding type declarations.
+components/transactions/TransactionList.tsx(28,35): error TS7006: Parameter 'tx' implicitly has an 'any' type.
+components/transactions/TransactionList.tsx(133,42): error TS7006: Parameter 'tx' implicitly has an 'any' type.
