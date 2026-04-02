@@ -11,19 +11,23 @@ A modern, responsive finance dashboard built to help users track spending, analy
 
 ### 📊 Dashboard Overview
 
-* Summary cards (Balance, Income, Expenses)
-* Time-based financial trends
+* Summary cards (Total Balance, Income, Expenses)
+* Time-based financial trend visualization
 * Category-wise spending breakdown
+
+---
 
 ### 💳 Transactions
 
-* View all transactions with:
+* View transactions with:
 
   * Date
   * Amount
   * Category
-  * Type (Income/Expense)
-* Search, filter, and sort functionality
+  * Type (Income / Expense)
+* Search, filter, and sorting functionality
+
+---
 
 ### 🔐 Role-Based UI (Simulated RBAC)
 
@@ -40,8 +44,8 @@ A modern, responsive finance dashboard built to help users track spending, analy
 ### 📈 Insights
 
 * Highest spending category
-* Monthly comparisons
-* Derived financial insights from transaction data
+* Monthly comparison
+* Derived financial observations
 
 ---
 
@@ -50,64 +54,85 @@ A modern, responsive finance dashboard built to help users track spending, analy
 * **Framework:** Next.js (App Router)
 * **Language:** TypeScript
 * **Styling:** Tailwind CSS
-* **Charts:** Recharts (or your charting library)
+* **Charts:** Recharts (or charting library used)
 * **State Management:** React Context API
 
 ---
 
 ## 📁 Project Structure
 
-```bash id="x9k2lp"
-src/
+```bash id="a91xkd"
+finance-dashboard-zorvyn/
 │
 ├── app/                      # Next.js app router (pages, layout)
 │
-├── features/                 # Feature-based modular architecture
-│   ├── dashboard/
-│   │   ├── components/       # Dashboard UI components
-│   │   ├── hooks/            # Dashboard-specific logic
-│   │   ├── utils/            # Helper functions
-│   │   └── index.ts
-│   │
-│   ├── transactions/
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   ├── utils/
-│   │   └── index.ts
-│   │
-│   ├── insights/             # Insights feature
-│   └── role/                 # Role-based UI logic
+├── components/
+│   ├── charts/              # Chart components (line, pie, etc.)
+│   ├── dashboard/           # Dashboard-specific UI components
+│   ├── transactions/        # Transaction-related components
+│   ├── ui/                  # Reusable UI elements
+│   ├── views/               # Page-level composed views
+│   └── layout/              # Layout components (header, wrappers)
 │
-├── shared/                   # Reusable modules across features
-│   ├── components/ui/        # Generic UI components
-│   ├── hooks/                # Shared hooks
-│   ├── utils/                # Utility functions
-│   └── types/                # Global TypeScript types
+├── context/
+│   └── FinanceContext.tsx   # Global state management
 │
-├── context/                  # Global state (FinanceContext)
-├── data/                     # Mock data
-├── lib/                      # Configs and helpers
-└── styles/                   # Global styles
+├── hooks/
+│   └── use-mobile.ts        # Custom reusable hooks
+│
+├── data/
+│   └── mockData.ts          # Mock dataset
+│
+├── lib/                     # Utility functions and helpers
+├── types/                   # TypeScript type definitions
+│
+├── styles/                  # Global styles
+│
+├── public/                  # Static assets
+│
+└── config files             # ESLint, TypeScript, etc.
 ```
 
 ---
 
-## 🧩 Architecture Overview
+## 🧩 Structure Explanation
 
-* Uses a **feature-based modular architecture**
-* Each feature encapsulates its own:
+* **components/** → Organized by feature for UI composition
 
-  * UI components
-  * Business logic
-  * Utilities
-* Shared logic is abstracted into `shared/`
-* Global state handled via **React Context API**
+* **charts/** → Contains reusable data visualization components
+
+* **dashboard/** → Core dashboard elements (summary cards, insights, etc.)
+
+* **transactions/** → Transaction list and related UI
+
+* **ui/** → Generic reusable components
+
+* **views/** → Page-level structure combining multiple components
+
+* **context/** → Centralized state (transactions, roles, filters)
+
+* **hooks/** → Custom reusable logic
+
+* **data/** → Mock data simulating backend behavior
+
+* **types/** → Strong typing for maintainability
+
+* **lib/** → Shared utilities and helper functions
+
+---
+
+## 🏗️ Architecture & Approach
+
+* Component-based architecture with **clear separation of concerns**
+* State managed using **React Context API**
+* UI structured by feature folders for better readability
+* Mock data used to simulate real-world financial scenarios
 
 ---
 
 ## ⚙️ Getting Started
 
-```bash id="1qaz9p"
+```bash id="j2l9mq"
 git clone https://github.com/rivu851/finance-dashboard-zorvyn.git
 cd finance-dashboard-zorvyn
 npm install
@@ -118,10 +143,10 @@ npm run dev
 
 ## 🎯 Design Decisions
 
-* Adopted **feature-based architecture** for scalability
-* Used **mock data** to simulate backend behavior
-* Focused on **clean UI and usability**
-* Implemented **RBAC at UI level** for demonstration
+* Focused on **simplicity and clarity**
+* Built using **mock data** for frontend-only evaluation
+* Prioritized **clean UI and usability**
+* Implemented **role-based UI simulation** without backend complexity
 
 ---
 
@@ -137,9 +162,9 @@ Fully responsive across:
 
 ## 🔄 State Management
 
-Managed using **React Context API**, handling:
+Handled using **React Context API**, managing:
 
-* Transactions
+* Transactions data
 * Filters and search
 * Role-based UI state
 
@@ -147,19 +172,19 @@ Managed using **React Context API**, handling:
 
 ## 🧪 Edge Case Handling
 
-* Empty data states
+* Empty transaction states
 * No results after filtering
-* Safe role switching
+* Safe role switching behavior
 
 ---
 
 ## ✨ Future Improvements
 
-* API integration & persistence
-* Advanced filtering (date ranges, grouping)
-* Export data (CSV/JSON)
-* Backend-based RBAC
-* Animations and UI polish
+* Data persistence (localStorage / API integration)
+* Advanced filtering (date range, grouping)
+* Export functionality (CSV/JSON)
+* Backend-driven RBAC
+* Animations and micro-interactions
 
 ---
 
