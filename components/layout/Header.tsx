@@ -53,15 +53,15 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setIsMobileMenuOpen }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-end space-x-2 sm:space-x-4 w-full md:w-auto">
+      <div className="flex flex-wrap items-center justify-end gap-3 w-full md:w-auto mt-4 md:mt-0">
         <RoleToggle />
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
-          <button className="p-2.5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:shadow-sm transition-all">
+          <button className="p-2.5 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:shadow-sm transition-all hidden sm:block">
             <Bell size={20} />
           </button>
-          <div className="flex items-center ml-2 border border-purple-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-full pr-1 pl-3 py-1 shadow-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mr-3">
+          <div className="flex items-center ml-1 border border-purple-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-full pr-1 pl-3 py-1 shadow-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mr-2 sm:mr-3">
               {role}
             </span>
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-600 p-0.5 shadow-md">

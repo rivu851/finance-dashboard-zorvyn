@@ -45,9 +45,13 @@ export const ChartsSection = () => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        whileInView={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ delay: 0.3 }}
+        transition={{ 
+          opacity: { duration: 0.5 },
+          scale: { duration: 0.5 },
+          y: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+        }}
         className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200"
       >
         <div className="flex items-center justify-between mb-6">
@@ -95,9 +99,13 @@ export const ChartsSection = () => {
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        whileInView={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ delay: 0.4 }}
+        transition={{ 
+          opacity: { duration: 0.5 },
+          scale: { duration: 0.5 },
+          y: { duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }
+        }}
         className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200"
       >
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Expenses by Category</h3>

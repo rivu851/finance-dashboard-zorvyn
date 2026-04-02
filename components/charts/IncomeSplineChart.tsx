@@ -30,8 +30,13 @@ export function IncomeSplineChart() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
       viewport={{ once: true, amount: 0.2 }}
+      transition={{ 
+        opacity: { duration: 0.5 },
+        scale: { duration: 0.5 },
+        y: { duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.1 }
+      }}
       className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm transition-colors duration-200 mt-8"
     >
       <div className="flex items-center justify-between mb-6">

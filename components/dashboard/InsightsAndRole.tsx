@@ -85,9 +85,7 @@ export const RoleToggle = () => {
 
   return (
     <div className="flex items-center space-x-3">
-      <span className="hidden sm:inline-block text-xs font-semibold text-gray-400 uppercase tracking-widest">
-        Switch Role (Demo)
-      </span>
+     
       <div className="flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-xl transition-colors duration-200 border border-transparent dark:border-gray-700">
         <button
           onClick={() => handleRoleChange('viewer')}
