@@ -90,7 +90,7 @@ export const AddTransactionModal = ({ isOpen, onClose }: { isOpen: boolean, onCl
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="0.00"
-                    className="w-full pl-8 pr-4 py-3 bg-gray-50 border-none rounded-2xl text-lg font-bold focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full pl-8 pr-4 py-3 bg-gray-50 border-none rounded-2xl text-lg font-bold focus:ring-2 focus:ring-purple-500/20 transition-all"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ export const AddTransactionModal = ({ isOpen, onClose }: { isOpen: boolean, onCl
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     placeholder="e.g. Food"
-                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-purple-500/20 transition-all"
                   />
                 </div>
                 <div className="space-y-2">
@@ -114,7 +114,7 @@ export const AddTransactionModal = ({ isOpen, onClose }: { isOpen: boolean, onCl
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-purple-500/20 transition-all"
                   />
                 </div>
               </div>
@@ -127,7 +127,7 @@ export const AddTransactionModal = ({ isOpen, onClose }: { isOpen: boolean, onCl
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="What was this for?"
-                  className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border-none rounded-2xl text-sm focus:ring-2 focus:ring-purple-500/20 transition-all"
                 />
               </div>
 
@@ -135,7 +135,7 @@ export const AddTransactionModal = ({ isOpen, onClose }: { isOpen: boolean, onCl
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 mt-4"
+                className="w-full py-4 bg-purple-600 text-white rounded-2xl font-bold text-lg hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200 mt-4"
               >
                 Save Transaction
               </motion.button>

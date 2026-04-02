@@ -33,7 +33,7 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
 
   // Load initial data
   useEffect(() => {
-    const saved = localStorage.getItem('findash_transactions');
+    const saved = localStorage.getItem('findash_transactions_v2');
     const data = saved ? JSON.parse(saved) : MOCK_TRANSACTIONS;
     setTimeout(() => setTransactions(data), 0);
   }, []);
@@ -41,7 +41,7 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
   // Persist data
   useEffect(() => {
     if (transactions.length > 0) {
-      localStorage.setItem('findash_transactions', JSON.stringify(transactions));
+      localStorage.setItem('findash_transactions_v2', JSON.stringify(transactions));
     }
   }, [transactions]);
 
