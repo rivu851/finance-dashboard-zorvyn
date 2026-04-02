@@ -1,51 +1,91 @@
 # 💸 Zorvyn Finance Dashboard
 
-A modern, responsive finance dashboard built to help users track spending, analyze financial behavior, and explore insights through intuitive visualizations.
+A modern, responsive finance dashboard designed to help users track financial activity, analyze spending patterns, and gain actionable insights through intuitive visualizations.
 
 🔗 **Live Demo:** https://finance-dashboard-zorvyn-nu.vercel.app/
 📦 **Repository:** https://github.com/rivu851/finance-dashboard-zorvyn
 
 ---
 
-## 🚀 Features
+## 📌 Project Overview
 
-### 📊 Dashboard Overview
+This project was built as part of a frontend assignment to demonstrate the ability to design and implement a clean, interactive finance dashboard UI.
 
-* Summary cards (Total Balance, Income, Expenses)
-* Time-based financial trend visualization
-* Category-wise spending breakdown
+The application focuses on:
+
+* Presenting financial data clearly
+* Enabling transaction exploration
+* Simulating role-based UI behavior
+* Delivering a responsive and user-friendly experience
 
 ---
 
-### 💳 Transactions
+## 🚀 Features (Mapped to Assignment Requirements)
 
-* View transactions with:
+### ✅ 1. Dashboard Overview
+
+* Summary cards:
+
+  * Total Balance
+  * Income
+  * Expenses
+* Time-based visualization (financial trends)
+* Category-based visualization (spending breakdown)
+
+---
+
+### ✅ 2. Transactions Section
+
+* Transaction list displaying:
 
   * Date
   * Amount
   * Category
   * Type (Income / Expense)
-* Search, filter, and sorting functionality
+* Features implemented:
+
+  * Search
+  * Filtering
+  * Sorting
 
 ---
 
-### 🔐 Role-Based UI (Simulated RBAC)
+### ✅ 3. Role-Based UI (Simulated RBAC)
 
-* **Viewer**
+* Viewer:
 
   * Read-only access
-* **Admin**
+* Admin:
 
-  * Can add transactions
-* Role switching with dynamic UI updates
+  * Ability to add transactions
+* Role switching dynamically updates UI behavior
 
 ---
 
-### 📈 Insights
+### ✅ 4. Insights Section
 
 * Highest spending category
-* Monthly comparison
-* Derived financial observations
+* Monthly comparisons
+* Derived insights from transaction data
+
+---
+
+### ✅ 5. State Management
+
+* Centralized using React Context API
+* Handles:
+
+  * Transactions data
+  * Filters
+  * Role state
+
+---
+
+### ✅ 6. UI & UX
+
+* Clean and readable design
+* Fully responsive across devices
+* Handles empty and filtered states gracefully
 
 ---
 
@@ -54,85 +94,53 @@ A modern, responsive finance dashboard built to help users track spending, analy
 * **Framework:** Next.js (App Router)
 * **Language:** TypeScript
 * **Styling:** Tailwind CSS
-* **Charts:** Recharts (or charting library used)
+* **Charts:** Recharts (or chart library used)
 * **State Management:** React Context API
 
 ---
 
 ## 📁 Project Structure
 
-```bash id="a91xkd"
+```bash
 finance-dashboard-zorvyn/
 │
-├── app/                      # Next.js app router (pages, layout)
+├── app/                      # Next.js app router
 │
 ├── components/
-│   ├── charts/              # Chart components (line, pie, etc.)
-│   ├── dashboard/           # Dashboard-specific UI components
-│   ├── transactions/        # Transaction-related components
+│   ├── charts/              # Data visualization components
+│   ├── dashboard/           # Dashboard UI components
+│   ├── transactions/        # Transaction components
 │   ├── ui/                  # Reusable UI elements
-│   ├── views/               # Page-level composed views
-│   └── layout/              # Layout components (header, wrappers)
+│   ├── views/               # Page-level compositions
+│   └── layout/              # Layout components
 │
 ├── context/
 │   └── FinanceContext.tsx   # Global state management
 │
-├── hooks/
-│   └── use-mobile.ts        # Custom reusable hooks
-│
-├── data/
-│   └── mockData.ts          # Mock dataset
-│
-├── lib/                     # Utility functions and helpers
-├── types/                   # TypeScript type definitions
-│
+├── hooks/                   # Custom hooks
+├── data/                    # Mock data
+├── lib/                     # Utility functions
+├── types/                   # TypeScript types
 ├── styles/                  # Global styles
-│
 ├── public/                  # Static assets
 │
-└── config files             # ESLint, TypeScript, etc.
+└── config files             # ESLint, TSConfig, etc.
 ```
 
 ---
 
-## 🧩 Structure Explanation
+## 🧩 Architecture & Approach
 
-* **components/** → Organized by feature for UI composition
-
-* **charts/** → Contains reusable data visualization components
-
-* **dashboard/** → Core dashboard elements (summary cards, insights, etc.)
-
-* **transactions/** → Transaction list and related UI
-
-* **ui/** → Generic reusable components
-
-* **views/** → Page-level structure combining multiple components
-
-* **context/** → Centralized state (transactions, roles, filters)
-
-* **hooks/** → Custom reusable logic
-
-* **data/** → Mock data simulating backend behavior
-
-* **types/** → Strong typing for maintainability
-
-* **lib/** → Shared utilities and helper functions
-
----
-
-## 🏗️ Architecture & Approach
-
-* Component-based architecture with **clear separation of concerns**
-* State managed using **React Context API**
-* UI structured by feature folders for better readability
-* Mock data used to simulate real-world financial scenarios
+* Component-based architecture with separation of concerns
+* State managed using React Context API
+* Feature-specific components grouped logically
+* Mock data used to simulate real-world financial data
 
 ---
 
 ## ⚙️ Getting Started
 
-```bash id="j2l9mq"
+```bash
 git clone https://github.com/rivu851/finance-dashboard-zorvyn.git
 cd finance-dashboard-zorvyn
 npm install
@@ -141,38 +149,37 @@ npm run dev
 
 ---
 
-## 🎯 Design Decisions
+## 📸 Screenshots
 
-* Focused on **simplicity and clarity**
-* Built using **mock data** for frontend-only evaluation
-* Prioritized **clean UI and usability**
-* Implemented **role-based UI simulation** without backend complexity
+> *(Add screenshots here for maximum impact — highly recommended)*
+
+### Dashboard Overview
+
+![Dashboard Screenshot](./public/screenshots/dashboard.png)
+
+### Transactions View
+
+![Transactions Screenshot](./public/screenshots/transactions.png)
+
+### Insights Section
+
+![Insights Screenshot](./public/screenshots/insights.png)
 
 ---
 
 ## 📱 Responsiveness
 
-Fully responsive across:
-
 * Desktop
 * Tablet
 * Mobile
 
----
-
-## 🔄 State Management
-
-Handled using **React Context API**, managing:
-
-* Transactions data
-* Filters and search
-* Role-based UI state
+Fully optimized for all screen sizes.
 
 ---
 
 ## 🧪 Edge Case Handling
 
-* Empty transaction states
+* Empty transaction state
 * No results after filtering
 * Safe role switching behavior
 
@@ -181,9 +188,9 @@ Handled using **React Context API**, managing:
 ## ✨ Future Improvements
 
 * Data persistence (localStorage / API integration)
-* Advanced filtering (date range, grouping)
+* Advanced filtering (date ranges, grouping)
 * Export functionality (CSV/JSON)
-* Backend-driven RBAC
+* Backend-based RBAC
 * Animations and micro-interactions
 
 ---
