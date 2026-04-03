@@ -147,25 +147,7 @@ npm install
 npm run dev
 ```
 
----
 
-## 📸 Screenshots
-
-> *(Add screenshots here for maximum impact — highly recommended)*
-
-### Dashboard Overview
-
-![Dashboard Screenshot](./public/screenshots/dashboard.png)
-
-### Transactions View
-
-![Transactions Screenshot](./public/screenshots/transactions.png)
-
-### Insights Section
-
-![Insights Screenshot](./public/screenshots/insights.png)
-
----
 
 ## 📱 Responsiveness
 
